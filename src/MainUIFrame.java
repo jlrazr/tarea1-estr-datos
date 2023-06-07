@@ -415,10 +415,9 @@ public class MainUIFrame extends javax.swing.JFrame {
     private void jButton_buscar_nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_buscar_nombreMouseClicked
         ArrayList<Gimnasio> listaGimnasios = gymDao.EncuentraPorNombre(jTextField_busqueda_nombre.getText());
         DefaultListModel<String> listModel = new DefaultListModel();
-        JList<String> gimnasiosListaString;
         
         for (Gimnasio gimnasio : listaGimnasios) {
-            listModel.addElement("ID: " + gimnasio.getId() + ", Nombre: " + gimnasio.getNombre() + ", Número de máquinas: " + gimnasio.getNumeroMaquinas() + ", Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + ", Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+            listModel.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
         }
 
         jList_busqueda_nombre.setModel(listModel);

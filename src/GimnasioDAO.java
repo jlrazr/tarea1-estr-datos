@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
-import javax.swing.JTable;
 
 public class GimnasioDAO {
     public ArrayList<Gimnasio> gimnasios;
@@ -23,16 +21,15 @@ public class GimnasioDAO {
     
     public ArrayList<Gimnasio> EncuentraPorNombre(String nombreEntrada) {
         ArrayList<Gimnasio> listaCoincidencias = new ArrayList<>();
+
         for (Gimnasio gimnasio : gimnasios) {
-            System.out.println(gimnasio.getNombre());
             if (gimnasio.getNombre().contains(nombreEntrada)) {
                 listaCoincidencias.add(gimnasio);
-                System.out.print(listaCoincidencias.size());
-                return listaCoincidencias;
             }
         }
-        return null;
+        return listaCoincidencias;
     }
+
     /*
     public ArrayList<Gimnasio> FiltraPorPromedioClientes(int promedio, Iterator<Gimnasio> iterator) {
         // Devuelve un ArrayList vacío al no haber gimnasios
