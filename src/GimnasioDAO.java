@@ -21,16 +21,19 @@ public class GimnasioDAO {
         return gimnasios;
     }
     
-    /*
-    public Gimnasio EncuentraPorNombre(String nombre) {
-        for (Gimnasio gym : gimnasios) {
-            if (gym.getGymName().contains(nombre)) {
-                return gym;
+    public ArrayList<Gimnasio> EncuentraPorNombre(String nombreEntrada) {
+        ArrayList<Gimnasio> listaCoincidencias = new ArrayList<>();
+        for (Gimnasio gimnasio : gimnasios) {
+            System.out.println(gimnasio.getNombre());
+            if (gimnasio.getNombre().contains(nombreEntrada)) {
+                listaCoincidencias.add(gimnasio);
+                System.out.print(listaCoincidencias.size());
+                return listaCoincidencias;
             }
         }
         return null;
-    }*/
-    
+    }
+    /*
     public ArrayList<Gimnasio> FiltraPorPromedioClientes(int promedio, Iterator<Gimnasio> iterator) {
         // Devuelve un ArrayList vacío al no haber gimnasios
         if (!iterator.hasNext()) {
@@ -50,13 +53,13 @@ public class GimnasioDAO {
         return listaResultado;
     };
     
-    
+
     public void muestraResultadosFiltradosPromedio(int promedio, JTable tabla) {
         ArrayList<Gimnasio> matchingGyms = searchByAverageMonthlyUsers(promedio, gyms.iterator());
         tabla.setModel(new ListaGimnasios(matchingGyms));
     }
 
-    /*
+    
     public void ActualizarGimnasio(Gimnasio gimnasio) {
         // Assuming ID is the unique identifier for a gym
         for (int i = 0; i < gimnasios.size(); i++) {

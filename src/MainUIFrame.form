@@ -141,7 +141,7 @@
                       <Component id="jTextField_cant_clientes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton_anadir_gym" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="375" max="32767" attributes="0"/>
+                      <EmptySpace pref="376" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -201,13 +201,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane_listaGimnasios" alignment="1" pref="933" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButton_actualizaLista" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="jScrollPane_listaGimnasios" pref="933" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -216,9 +210,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane_listaGimnasios" pref="561" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton_actualizaLista" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane_listaGimnasios" pref="604" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -241,15 +233,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton_actualizaLista">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="(DEPRECATED) Actualizar Lista"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton_actualizaListaMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_actualizaListaActionPerformed"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel_buscarGimnasios">
@@ -264,15 +247,173 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="957" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane_busqueda_gimnasios" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel_busqueda_nombre" max="32767" attributes="0"/>
+                                          <Component id="jTextField_busqueda_nombre" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="jButton_buscar_nombre" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel_editar_id" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel_editar_nombre" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jTextField2" min="-2" pref="120" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Component id="jTextField_editar_id" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel_editar_maquinas" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField3" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel_editar_crossfit" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox_editar_crossfit" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jTextField4" min="-2" pref="154" max="-2" attributes="0"/>
+                                          <Component id="jLabel_editar_promedio" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jButton_editar_guardar_cambios1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="280" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="627" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel_busqueda_nombre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextField_busqueda_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton_buscar_nombre" alignment="3" pref="20" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jScrollPane_busqueda_gimnasios" min="-2" pref="393" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel_editar_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_editar_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_editar_maquinas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_editar_crossfit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_editar_promedio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextField_editar_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCheckBox_editar_crossfit" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton_editar_guardar_cambios1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel_busqueda_nombre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ingrese el nombre del gimnasio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField_busqueda_nombre">
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane_busqueda_gimnasios">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="jList_busqueda_nombre">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new DefaultListModel&lt;String&gt;()" type="code"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar Gimnasio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel_editar_id">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID Gimnasio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel_editar_nombre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nombre"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel_editar_maquinas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="N&#xb0; de m&#xe1;quinas"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel_editar_crossfit">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Incluye Crossfit"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel_editar_promedio">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Promedio mensual de clientes"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton_buscar_nombre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton_buscar_nombreMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField_editar_id">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField2">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField3">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField4">
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox_editar_crossfit">
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton_editar_guardar_cambios1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Guardar cambios"/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel_busquedaPorClientes">
           <Constraints>
@@ -315,7 +456,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton_filtrarPorPromedio" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane_filtroPorPromedio" pref="514" max="32767" attributes="0"/>
+                      <Component id="jScrollPane_filtroPorPromedio" pref="515" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -368,7 +509,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="591" max="32767" attributes="0"/>
+                      <EmptySpace pref="592" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton_ordenarNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton_ordenarNumMaquinas" alignment="3" min="-2" max="-2" attributes="0"/>
