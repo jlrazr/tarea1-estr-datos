@@ -29,6 +29,15 @@ public class GimnasioDAO {
         }
         return listaCoincidencias;
     }
+    
+    public void ActualizarGimnasio(Gimnasio gimnasio) {
+        for (int i = 0; i < gimnasios.size(); i++) {
+            if (gimnasios.get(i).getId() == gimnasio.getId()) {
+                gimnasios.set(i, gimnasio);
+                break;
+            }
+        }
+    }
 
     /*
     public ArrayList<Gimnasio> FiltraPorPromedioClientes(int promedio, Iterator<Gimnasio> iterator) {
@@ -56,15 +65,5 @@ public class GimnasioDAO {
         tabla.setModel(new ListaGimnasios(matchingGyms));
     }
 
-    
-    public void ActualizarGimnasio(Gimnasio gimnasio) {
-        // Assuming ID is the unique identifier for a gym
-        for (int i = 0; i < gimnasios.size(); i++) {
-            if (gimnasios.get(i).getId() == gimnasio.getId()) {
-                gimnasios.set(i, gimnasio);
-                break;
-            }
-        }
-    }
     */
 }

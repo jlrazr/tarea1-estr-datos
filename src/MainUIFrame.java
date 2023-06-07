@@ -55,9 +55,9 @@ public class MainUIFrame extends javax.swing.JFrame {
         jLabel_editar_promedio = new javax.swing.JLabel();
         jButton_buscar_nombre = new javax.swing.JButton();
         jTextField_editar_id = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        jTextField_editar_nombre = new javax.swing.JTextField();
+        jTextField_editar_maquinas = new javax.swing.JTextField();
+        jTextField_editar_promedio = new javax.swing.JTextField();
         jCheckBox_editar_crossfit = new javax.swing.JCheckBox();
         jButton_editar_guardar_cambios1 = new javax.swing.JButton();
         jPanel_busquedaPorClientes = new javax.swing.JPanel();
@@ -209,6 +209,11 @@ public class MainUIFrame extends javax.swing.JFrame {
         });
 
         jButton_editar_guardar_cambios1.setText("Guardar cambios");
+        jButton_editar_guardar_cambios1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_editar_guardar_cambios1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_buscarGimnasiosLayout = new javax.swing.GroupLayout(jPanel_buscarGimnasios);
         jPanel_buscarGimnasios.setLayout(jPanel_buscarGimnasiosLayout);
@@ -234,19 +239,19 @@ public class MainUIFrame extends javax.swing.JFrame {
                                         .addGap(34, 34, 34)
                                         .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel_editar_nombre)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jTextField_editar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(jTextField_editar_id, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(37, 37, 37)
                                 .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel_editar_maquinas)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField_editar_maquinas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(45, 45, 45)
                                 .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel_editar_crossfit)
                                     .addComponent(jCheckBox_editar_crossfit))
                                 .addGap(50, 50, 50)
                                 .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_editar_promedio, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel_editar_promedio)))
                             .addComponent(jButton_editar_guardar_cambios1))
                         .addGap(0, 280, Short.MAX_VALUE)))
@@ -275,9 +280,9 @@ public class MainUIFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField_editar_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_editar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_editar_maquinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_editar_promedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBox_editar_crossfit))
                 .addGap(18, 18, 18)
                 .addComponent(jButton_editar_guardar_cambios1)
@@ -423,6 +428,18 @@ public class MainUIFrame extends javax.swing.JFrame {
         jList_busqueda_nombre.setModel(listModel);
     }//GEN-LAST:event_jButton_buscar_nombreMouseClicked
 
+    private void jButton_editar_guardar_cambios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_editar_guardar_cambios1MouseClicked
+        int id = Integer.parseInt(jTextField_editar_id.getText());
+        String nombre = jTextField_editar_nombre.getText();
+        int maquinas = Integer.parseInt(jTextField_editar_maquinas.getText());
+        boolean crossfit = jCheckBox_editar_crossfit.isSelected();
+        int clientes = Integer.parseInt(jTextField_editar_promedio.getText());
+        
+        Gimnasio nuevosDatos = new Gimnasio(id, nombre, maquinas, crossfit, clientes);
+
+        gymDao.ActualizarGimnasio(nuevosDatos);
+    }//GEN-LAST:event_jButton_editar_guardar_cambios1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -492,13 +509,13 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable_filtroPorPromedio;
     private javax.swing.JTable jTable_tablaListaGimnasios;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField_busqueda_nombre;
     private javax.swing.JTextField jTextField_cant_clientes;
     private javax.swing.JTextField jTextField_cantidad_maqinas;
     private javax.swing.JTextField jTextField_editar_id;
+    private javax.swing.JTextField jTextField_editar_maquinas;
+    private javax.swing.JTextField jTextField_editar_nombre;
+    private javax.swing.JTextField jTextField_editar_promedio;
     private javax.swing.JTextField jTextField_nombre_gym;
     private javax.swing.JTextField jTextField_promedioClientes;
     // End of variables declaration//GEN-END:variables

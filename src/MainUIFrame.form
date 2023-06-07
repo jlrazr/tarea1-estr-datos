@@ -269,7 +269,7 @@
                                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel_editar_nombre" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField2" min="-2" pref="120" max="-2" attributes="0"/>
+                                                  <Component id="jTextField_editar_nombre" min="-2" pref="120" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Component id="jTextField_editar_id" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
@@ -277,7 +277,7 @@
                                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel_editar_maquinas" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField3" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
+                                          <Component id="jTextField_editar_maquinas" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -286,7 +286,7 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextField4" min="-2" pref="154" max="-2" attributes="0"/>
+                                          <Component id="jTextField_editar_promedio" min="-2" pref="154" max="-2" attributes="0"/>
                                           <Component id="jLabel_editar_promedio" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -324,9 +324,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jTextField_editar_id" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField_editar_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField_editar_maquinas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField_editar_promedio" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jCheckBox_editar_crossfit" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -400,11 +400,11 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_editar_id">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="jTextField_editar_nombre">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="jTextField_editar_maquinas">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="jTextField_editar_promedio">
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox_editar_crossfit">
             </Component>
@@ -412,6 +412,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Guardar cambios"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton_editar_guardar_cambios1MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
