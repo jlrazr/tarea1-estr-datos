@@ -38,6 +38,17 @@ public class GimnasioDAO {
             }
         }
     }
+    
+    public ArrayList<Gimnasio> FiltrarPorPromedio(int promedio) {
+        ArrayList<Gimnasio> listaCoincidencias = new ArrayList<>();
+
+        for (Gimnasio gimnasio : gimnasios) {
+            if (gimnasio.getClientesPorMes() >= promedio) {
+                listaCoincidencias.add(gimnasio);
+            }
+        }
+        return listaCoincidencias;
+    }
 
     /*
     public ArrayList<Gimnasio> FiltraPorPromedioClientes(int promedio, Iterator<Gimnasio> iterator) {
@@ -59,7 +70,7 @@ public class GimnasioDAO {
         return listaResultado;
     };
     
-
+    
     public void muestraResultadosFiltradosPromedio(int promedio, JTable tabla) {
         ArrayList<Gimnasio> matchingGyms = searchByAverageMonthlyUsers(promedio, gyms.iterator());
         tabla.setModel(new ListaGimnasios(matchingGyms));

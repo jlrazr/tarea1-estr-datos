@@ -42,6 +42,7 @@ public class MainUIFrame extends javax.swing.JFrame {
         jPanel_listaGimnasios = new javax.swing.JPanel();
         jScrollPane_listaGimnasios = new javax.swing.JScrollPane();
         jTable_tablaListaGimnasios = new javax.swing.JTable(new ListaGimnasios(gymDao.obtenerGimnasios().iterator()));
+        jButton_lista_actualiza = new javax.swing.JButton();
         jPanel_buscarGimnasios = new javax.swing.JPanel();
         jLabel_busqueda_nombre = new javax.swing.JLabel();
         jTextField_busqueda_nombre = new javax.swing.JTextField();
@@ -64,8 +65,8 @@ public class MainUIFrame extends javax.swing.JFrame {
         jLabel_promedioMinimo = new javax.swing.JLabel();
         jTextField_promedioClientes = new javax.swing.JTextField();
         jButton_filtrarPorPromedio = new javax.swing.JButton();
-        jScrollPane_filtroPorPromedio = new javax.swing.JScrollPane();
-        jTable_filtroPorPromedio = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList_busqueda_promedio = new javax.swing.JList<>();
         jPanel_ordenarGimnasios = new javax.swing.JPanel();
         jButton_ordenarNombre = new javax.swing.JButton();
         jButton_ordenarNumMaquinas = new javax.swing.JButton();
@@ -157,7 +158,7 @@ public class MainUIFrame extends javax.swing.JFrame {
                 .addComponent(jTextField_cant_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton_anadir_gym)
-                .addContainerGap(376, Short.MAX_VALUE))
+                .addContainerGap(393, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Añadir Gimnasio", jPanel_anadirGimnasio);
@@ -165,20 +166,33 @@ public class MainUIFrame extends javax.swing.JFrame {
         jTable_tablaListaGimnasios.setModel(new ListaGimnasios(gymDao.obtenerGimnasios().iterator()));
         jScrollPane_listaGimnasios.setViewportView(jTable_tablaListaGimnasios);
 
+        jButton_lista_actualiza.setText("Actualizar Lista");
+        jButton_lista_actualiza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_lista_actualizaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel_listaGimnasiosLayout = new javax.swing.GroupLayout(jPanel_listaGimnasios);
         jPanel_listaGimnasios.setLayout(jPanel_listaGimnasiosLayout);
         jPanel_listaGimnasiosLayout.setHorizontalGroup(
             jPanel_listaGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_listaGimnasiosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane_listaGimnasios, javax.swing.GroupLayout.DEFAULT_SIZE, 933, Short.MAX_VALUE)
+                .addGroup(jPanel_listaGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane_listaGimnasios, javax.swing.GroupLayout.DEFAULT_SIZE, 933, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_listaGimnasiosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_lista_actualiza)))
                 .addContainerGap())
         );
         jPanel_listaGimnasiosLayout.setVerticalGroup(
             jPanel_listaGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_listaGimnasiosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane_listaGimnasios, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
+                .addComponent(jScrollPane_listaGimnasios, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton_lista_actualiza)
                 .addContainerGap())
         );
 
@@ -278,15 +292,16 @@ public class MainUIFrame extends javax.swing.JFrame {
                     .addComponent(jLabel_editar_crossfit)
                     .addComponent(jLabel_editar_promedio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_editar_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_editar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_editar_maquinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField_editar_promedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox_editar_crossfit))
+                    .addComponent(jCheckBox_editar_crossfit, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField_editar_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_editar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_editar_maquinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton_editar_guardar_cambios1)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Búsqueda de Gimnasios", jPanel_buscarGimnasios);
@@ -294,8 +309,14 @@ public class MainUIFrame extends javax.swing.JFrame {
         jLabel_promedioMinimo.setText("Ingrese el promedio mínimo para el filtro de gimnasios");
 
         jButton_filtrarPorPromedio.setText("Filtrar");
+        jButton_filtrarPorPromedio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_filtrarPorPromedioMouseClicked(evt);
+            }
+        });
 
-        jScrollPane_filtroPorPromedio.setViewportView(jTable_filtroPorPromedio);
+        jList_busqueda_promedio.setModel(new DefaultListModel<String>());
+        jScrollPane1.setViewportView(jList_busqueda_promedio);
 
         javax.swing.GroupLayout jPanel_busquedaPorClientesLayout = new javax.swing.GroupLayout(jPanel_busquedaPorClientes);
         jPanel_busquedaPorClientes.setLayout(jPanel_busquedaPorClientesLayout);
@@ -304,14 +325,14 @@ public class MainUIFrame extends javax.swing.JFrame {
             .addGroup(jPanel_busquedaPorClientesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_busquedaPorClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane_filtroPorPromedio, javax.swing.GroupLayout.DEFAULT_SIZE, 933, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel_busquedaPorClientesLayout.createSequentialGroup()
                         .addGroup(jPanel_busquedaPorClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_promedioMinimo)
                             .addGroup(jPanel_busquedaPorClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jButton_filtrarPorPromedio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                                 .addComponent(jTextField_promedioClientes, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 670, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel_busquedaPorClientesLayout.setVerticalGroup(
@@ -323,8 +344,8 @@ public class MainUIFrame extends javax.swing.JFrame {
                 .addComponent(jTextField_promedioClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_filtrarPorPromedio)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane_filtroPorPromedio, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -348,7 +369,7 @@ public class MainUIFrame extends javax.swing.JFrame {
         jPanel_ordenarGimnasiosLayout.setVerticalGroup(
             jPanel_ordenarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_ordenarGimnasiosLayout.createSequentialGroup()
-                .addContainerGap(592, Short.MAX_VALUE)
+                .addContainerGap(609, Short.MAX_VALUE)
                 .addGroup(jPanel_ordenarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_ordenarNombre)
                     .addComponent(jButton_ordenarNumMaquinas))
@@ -438,7 +459,22 @@ public class MainUIFrame extends javax.swing.JFrame {
         Gimnasio nuevosDatos = new Gimnasio(id, nombre, maquinas, crossfit, clientes);
 
         gymDao.ActualizarGimnasio(nuevosDatos);
+
     }//GEN-LAST:event_jButton_editar_guardar_cambios1MouseClicked
+
+    private void jButton_lista_actualizaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_lista_actualizaMouseClicked
+        jTable_tablaListaGimnasios.setModel(new ListaGimnasios(gymDao.obtenerGimnasios().iterator()));
+    }//GEN-LAST:event_jButton_lista_actualizaMouseClicked
+
+    private void jButton_filtrarPorPromedioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_filtrarPorPromedioMouseClicked
+        ArrayList<Gimnasio> listaGimnasios = gymDao.FiltrarPorPromedio(Integer.parseInt(jTextField_promedioClientes.getText()));
+        DefaultListModel<String> listModel = new DefaultListModel();
+        
+        for (Gimnasio gimnasio : listaGimnasios) {
+            listModel.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+        }
+        jList_busqueda_promedio.setModel(listModel);
+    }//GEN-LAST:event_jButton_filtrarPorPromedioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -481,6 +517,7 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton_buscar_nombre;
     private javax.swing.JButton jButton_editar_guardar_cambios1;
     private javax.swing.JButton jButton_filtrarPorPromedio;
+    private javax.swing.JButton jButton_lista_actualiza;
     private javax.swing.JButton jButton_ordenarNombre;
     private javax.swing.JButton jButton_ordenarNumMaquinas;
     private javax.swing.JCheckBox jCheckBox_crossfit;
@@ -498,16 +535,16 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_promedioMinimo;
     private javax.swing.JLabel jLabel_tituloPrincipal;
     private javax.swing.JList<String> jList_busqueda_nombre;
+    private javax.swing.JList<String> jList_busqueda_promedio;
     private javax.swing.JPanel jPanel_anadirGimnasio;
     private javax.swing.JPanel jPanel_buscarGimnasios;
     private javax.swing.JPanel jPanel_busquedaPorClientes;
     private javax.swing.JPanel jPanel_listaGimnasios;
     private javax.swing.JPanel jPanel_ordenarGimnasios;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane_busqueda_gimnasios;
-    private javax.swing.JScrollPane jScrollPane_filtroPorPromedio;
     private javax.swing.JScrollPane jScrollPane_listaGimnasios;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable_filtroPorPromedio;
     private javax.swing.JTable jTable_tablaListaGimnasios;
     private javax.swing.JTextField jTextField_busqueda_nombre;
     private javax.swing.JTextField jTextField_cant_clientes;
