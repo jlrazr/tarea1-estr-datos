@@ -70,6 +70,10 @@ public class MainUIFrame extends javax.swing.JFrame {
         jPanel_ordenarGimnasios = new javax.swing.JPanel();
         jButton_ordenarNombre = new javax.swing.JButton();
         jButton_ordenarNumMaquinas = new javax.swing.JButton();
+        jCheckBox_usar_insercion = new javax.swing.JCheckBox();
+        jScrollPane_ordenamiento = new javax.swing.JScrollPane();
+        jList_ordenamiento = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -352,27 +356,55 @@ public class MainUIFrame extends javax.swing.JFrame {
         jTabbedPane1.addTab("Búsqueda por Promedio de Clientes", jPanel_busquedaPorClientes);
 
         jButton_ordenarNombre.setText("Ordenar por nombre");
+        jButton_ordenarNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_ordenarNombreMouseClicked(evt);
+            }
+        });
 
         jButton_ordenarNumMaquinas.setText("Ordernar por cantidad de máquinas");
+        jButton_ordenarNumMaquinas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_ordenarNumMaquinasMouseClicked(evt);
+            }
+        });
+
+        jCheckBox_usar_insercion.setText("Usar ordenamiento por inserción");
+
+        jList_ordenamiento.setModel(new DefaultListModel<String>());
+        jScrollPane_ordenamiento.setViewportView(jList_ordenamiento);
+
+        jLabel2.setText("El algoritmo por defecto es MergeSort");
 
         javax.swing.GroupLayout jPanel_ordenarGimnasiosLayout = new javax.swing.GroupLayout(jPanel_ordenarGimnasios);
         jPanel_ordenarGimnasios.setLayout(jPanel_ordenarGimnasiosLayout);
         jPanel_ordenarGimnasiosLayout.setHorizontalGroup(
             jPanel_ordenarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_ordenarGimnasiosLayout.createSequentialGroup()
-                .addContainerGap(588, Short.MAX_VALUE)
-                .addComponent(jButton_ordenarNumMaquinas)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_ordenarNombre)
+            .addGroup(jPanel_ordenarGimnasiosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_ordenarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_ordenarGimnasiosLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                        .addComponent(jCheckBox_usar_insercion)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_ordenarNumMaquinas)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_ordenarNombre))
+                    .addComponent(jScrollPane_ordenamiento))
                 .addContainerGap())
         );
         jPanel_ordenarGimnasiosLayout.setVerticalGroup(
             jPanel_ordenarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_ordenarGimnasiosLayout.createSequentialGroup()
-                .addContainerGap(609, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane_ordenamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel_ordenarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_ordenarNombre)
-                    .addComponent(jButton_ordenarNumMaquinas))
+                    .addComponent(jButton_ordenarNumMaquinas)
+                    .addComponent(jCheckBox_usar_insercion)
+                    .addComponent(jLabel2))
                 .addContainerGap())
         );
 
@@ -476,6 +508,39 @@ public class MainUIFrame extends javax.swing.JFrame {
         jList_busqueda_promedio.setModel(listModel);
     }//GEN-LAST:event_jButton_filtrarPorPromedioMouseClicked
 
+    private void jButton_ordenarNumMaquinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_ordenarNumMaquinasMouseClicked
+        if (jCheckBox_usar_insercion.isSelected()) {
+            System.out.println("USANDO INSERCION");
+        } else {
+            ArrayList<Gimnasio> listaOriginal = gymDao.obtenerGimnasios();
+            ArrayList<Gimnasio> listaOrdenada = gymDao.ordenaGimnasiosMaquinasMS(listaOriginal);
+            DefaultListModel<String> modeloLista = new DefaultListModel();
+
+            for (Gimnasio gimnasio : listaOrdenada) {
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+            }
+
+            jList_ordenamiento.setModel(modeloLista);
+        }
+    }//GEN-LAST:event_jButton_ordenarNumMaquinasMouseClicked
+
+    private void jButton_ordenarNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_ordenarNombreMouseClicked
+        if (jCheckBox_usar_insercion.isSelected()) {
+            System.out.println("USANDO INSERCION");
+        } else {
+
+            ArrayList<Gimnasio> listaOriginal = gymDao.obtenerGimnasios();
+            ArrayList<Gimnasio> listaOrdenada = gymDao.ordenaGimnasiosNombreMS(listaOriginal);
+            DefaultListModel<String> modeloLista = new DefaultListModel();
+
+            for (Gimnasio gimnasio : listaOrdenada) {
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+            }
+
+            jList_ordenamiento.setModel(modeloLista);
+        }
+    }//GEN-LAST:event_jButton_ordenarNombreMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -522,7 +587,9 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton_ordenarNumMaquinas;
     private javax.swing.JCheckBox jCheckBox_crossfit;
     private javax.swing.JCheckBox jCheckBox_editar_crossfit;
+    private javax.swing.JCheckBox jCheckBox_usar_insercion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_busqueda_nombre;
     private javax.swing.JLabel jLabel_cant_clientes;
     private javax.swing.JLabel jLabel_cantidad_maquinas;
@@ -536,6 +603,7 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_tituloPrincipal;
     private javax.swing.JList<String> jList_busqueda_nombre;
     private javax.swing.JList<String> jList_busqueda_promedio;
+    private javax.swing.JList<String> jList_ordenamiento;
     private javax.swing.JPanel jPanel_anadirGimnasio;
     private javax.swing.JPanel jPanel_buscarGimnasios;
     private javax.swing.JPanel jPanel_busquedaPorClientes;
@@ -544,6 +612,7 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane_busqueda_gimnasios;
     private javax.swing.JScrollPane jScrollPane_listaGimnasios;
+    private javax.swing.JScrollPane jScrollPane_ordenamiento;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable_tablaListaGimnasios;
     private javax.swing.JTextField jTextField_busqueda_nombre;

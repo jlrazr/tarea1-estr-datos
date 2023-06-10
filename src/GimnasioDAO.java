@@ -50,31 +50,35 @@ public class GimnasioDAO {
         return listaCoincidencias;
     }
 
-    /*
-    public ArrayList<Gimnasio> FiltraPorPromedioClientes(int promedio, Iterator<Gimnasio> iterator) {
-        // Devuelve un ArrayList vacío al no haber gimnasios
-        if (!iterator.hasNext()) {
-            return new ArrayList<>();
+    public static ArrayList<Gimnasio> ordenaGimnasiosNombreMS(ArrayList<Gimnasio> lista) {
+        int tamano = lista.size();
+        for (int i = 1; i < tamano; ++i) {
+            Gimnasio key = lista.get(i);
+            int j = i - 1;
+
+            while (j >= 0 && lista.get(j).getNombre().compareTo(key.getNombre()) > 0) {
+                lista.set(j + 1, lista.get(j));
+                j = j - 1;
+            }
+
+            lista.set(j + 1, key);
         }
-
-        Gimnasio gym = iterator.next();
-
-        // Este método se llama de manera recursiva
-        ArrayList<Gimnasio> listaResultado = FiltraPorPromedioClientes(promedio, iterator);
-
-        // añade el gimnasio si el valor obtenido es mayor o igual al ingresado
-        if (gym.getClientesPorMes() >= promedio) {
-            listaResultado.add(gym);
-        }
-
-        return listaResultado;
-    };
-    
-    
-    public void muestraResultadosFiltradosPromedio(int promedio, JTable tabla) {
-        ArrayList<Gimnasio> matchingGyms = searchByAverageMonthlyUsers(promedio, gyms.iterator());
-        tabla.setModel(new ListaGimnasios(matchingGyms));
+        return lista;
     }
+    
+        public static ArrayList<Gimnasio> ordenaGimnasiosMaquinasMS(ArrayList<Gimnasio> lista) {
+        int tamano = lista.size();
+        for (int i = 1; i < tamano; ++i) {
+            Gimnasio key = lista.get(i);
+            int j = i - 1;
 
-    */
+            while (j >= 0 && lista.get(j).getNumeroMaquinas() >= key.getNumeroMaquinas()) {
+                lista.set(j + 1, lista.get(j));
+                j = j - 1;
+            }
+
+            lista.set(j + 1, key);
+        }
+        return lista;
+    }
 }
