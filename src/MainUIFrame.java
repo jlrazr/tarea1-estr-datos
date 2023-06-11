@@ -369,12 +369,12 @@ public class MainUIFrame extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox_usar_insercion.setText("Usar ordenamiento por inserción");
+        jCheckBox_usar_insercion.setText("Usar algoritmo MergeSort");
 
         jList_ordenamiento.setModel(new DefaultListModel<String>());
         jScrollPane_ordenamiento.setViewportView(jList_ordenamiento);
 
-        jLabel2.setText("El algoritmo por defecto es MergeSort");
+        jLabel2.setText("El algoritmo por defecto es por inserción");
 
         javax.swing.GroupLayout jPanel_ordenarGimnasiosLayout = new javax.swing.GroupLayout(jPanel_ordenarGimnasios);
         jPanel_ordenarGimnasios.setLayout(jPanel_ordenarGimnasiosLayout);
@@ -385,7 +385,7 @@ public class MainUIFrame extends javax.swing.JFrame {
                 .addGroup(jPanel_ordenarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_ordenarGimnasiosLayout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                         .addComponent(jCheckBox_usar_insercion)
                         .addGap(18, 18, 18)
                         .addComponent(jButton_ordenarNumMaquinas)
@@ -509,12 +509,21 @@ public class MainUIFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_filtrarPorPromedioMouseClicked
 
     private void jButton_ordenarNumMaquinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_ordenarNumMaquinasMouseClicked
+        ArrayList<Gimnasio> listaOriginal = gymDao.obtenerGimnasios();
+        ArrayList<Gimnasio> listaOrdenada;
+        DefaultListModel<String> modeloLista = new DefaultListModel();
+
         if (jCheckBox_usar_insercion.isSelected()) {
-            System.out.println("USANDO INSERCION");
+            listaOrdenada = gymDao.ordenaGimnasiosMaquinasMS(listaOriginal, 0, listaOriginal.size()- 1);
+
+            for (Gimnasio gimnasio : listaOrdenada) {
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+            }
+
+            jList_ordenamiento.setModel(modeloLista);
         } else {
-            ArrayList<Gimnasio> listaOriginal = gymDao.obtenerGimnasios();
-            ArrayList<Gimnasio> listaOrdenada = gymDao.ordenaGimnasiosMaquinasMS(listaOriginal);
-            DefaultListModel<String> modeloLista = new DefaultListModel();
+
+            listaOrdenada = gymDao.ordenaGimnasiosMaquinasIS(listaOriginal);
 
             for (Gimnasio gimnasio : listaOrdenada) {
                 modeloLista.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
@@ -525,13 +534,21 @@ public class MainUIFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_ordenarNumMaquinasMouseClicked
 
     private void jButton_ordenarNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_ordenarNombreMouseClicked
+        ArrayList<Gimnasio> listaOriginal = gymDao.obtenerGimnasios();
+        ArrayList<Gimnasio> listaOrdenada;
+        DefaultListModel<String> modeloLista = new DefaultListModel();
+
         if (jCheckBox_usar_insercion.isSelected()) {
-            System.out.println("USANDO INSERCION");
+            listaOrdenada = gymDao.ordenaGimnasiosNombreMS(listaOriginal);
+
+            for (Gimnasio gimnasio : listaOrdenada) {
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+            }
+
+            jList_ordenamiento.setModel(modeloLista);
         } else {
 
-            ArrayList<Gimnasio> listaOriginal = gymDao.obtenerGimnasios();
-            ArrayList<Gimnasio> listaOrdenada = gymDao.ordenaGimnasiosNombreMS(listaOriginal);
-            DefaultListModel<String> modeloLista = new DefaultListModel();
+            listaOrdenada = gymDao.ordenaGimnasiosNombreIS(listaOriginal);
 
             for (Gimnasio gimnasio : listaOrdenada) {
                 modeloLista.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());

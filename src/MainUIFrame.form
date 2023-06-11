@@ -534,7 +534,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="189" max="32767" attributes="0"/>
+                              <EmptySpace pref="211" max="32767" attributes="0"/>
                               <Component id="jCheckBox_usar_insercion" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton_ordenarNumMaquinas" min="-2" max="-2" attributes="0"/>
@@ -583,7 +583,7 @@
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox_usar_insercion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Usar ordenamiento por inserci&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="Usar algoritmo MergeSort"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane_ordenamiento">
@@ -604,7 +604,7 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="El algoritmo por defecto es MergeSort"/>
+                <Property name="text" type="java.lang.String" value="El algoritmo por defecto es por inserci&#xf3;n"/>
               </Properties>
             </Component>
           </SubComponents>
