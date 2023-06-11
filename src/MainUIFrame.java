@@ -62,8 +62,6 @@ public class MainUIFrame extends javax.swing.JFrame {
         jTextField_editar_promedio = new javax.swing.JTextField();
         jCheckBox_editar_crossfit = new javax.swing.JCheckBox();
         jButton_editar_guardar_cambios1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel_elem_seleccionado = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel_busquedaPorClientes = new javax.swing.JPanel();
         jLabel_promedioMinimo = new javax.swing.JLabel();
@@ -211,13 +209,34 @@ public class MainUIFrame extends javax.swing.JFrame {
         jList_busqueda_nombre.setModel(new DefaultListModel<String>());
         jScrollPane_busqueda_gimnasios.setViewportView(jList_busqueda_nombre);
         jList_busqueda_nombre.addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent evt) {
-                if (!evt.getValueIsAdjusting()) {
-                    // Get the selected item from the list and set it as the JLabel's text
-                    String selectedValue = jList_busqueda_nombre.getSelectedValue();
-                    jLabel_elem_seleccionado.setText(selectedValue);
+            public void valueChanged(ListSelectionEvent evento) {
+                if (!evento.getValueIsAdjusting()) {
+                    String valorSeleccionado = jList_busqueda_nombre.getSelectedValue();
+                    llenarCampos(valorSeleccionado);
                 }
             }
+
+            public void llenarCampos(String stringInicial) {
+                int id;
+                String[] partes = stringInicial.split("   ");
+                for(int i = 0; i < partes.length; i++) {
+                    partes[i] = partes[i].trim();
+                }
+
+                String[] parteId = partes[0].split(":");
+                id = Integer.parseInt(parteId[1].trim());
+
+                Gimnasio gimnasio = gymDao.EncuentraPorId(id);
+
+                jTextField_editar_id.setText(Integer.toString(gimnasio.getId()));
+                jTextField_editar_nombre.setText(gimnasio.getNombre());
+                jTextField_editar_maquinas.setText(Integer.toString(gimnasio.getNumeroMaquinas()));
+                jTextField_editar_promedio.setText(Integer.toString(gimnasio.getClientesPorMes()));
+                if (gimnasio.getIncluyeCrossfit() == true) {
+                    jCheckBox_editar_crossfit.setSelected(true);
+                }
+            }
+
         });
 
         jLabel1.setText("Editar Gimnasio");
@@ -239,16 +258,14 @@ public class MainUIFrame extends javax.swing.JFrame {
             }
         });
 
+        jTextField_editar_id.setEditable(false);
+
         jButton_editar_guardar_cambios1.setText("Guardar cambios");
         jButton_editar_guardar_cambios1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton_editar_guardar_cambios1MouseClicked(evt);
             }
         });
-
-        jLabel3.setText("Elemento Seleccionado: ");
-
-        jLabel_elem_seleccionado.setText("No se ha seleccionado nigún elemento");
 
         javax.swing.GroupLayout jPanel_buscarGimnasiosLayout = new javax.swing.GroupLayout(jPanel_buscarGimnasios);
         jPanel_buscarGimnasios.setLayout(jPanel_buscarGimnasiosLayout);
@@ -288,9 +305,7 @@ public class MainUIFrame extends javax.swing.JFrame {
                                 .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField_editar_promedio, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel_editar_promedio)))
-                            .addComponent(jButton_editar_guardar_cambios1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel_elem_seleccionado))
+                            .addComponent(jButton_editar_guardar_cambios1))
                         .addGap(0, 280, Short.MAX_VALUE))
                     .addComponent(jSeparator2))
                 .addContainerGap())
@@ -305,12 +320,8 @@ public class MainUIFrame extends javax.swing.JFrame {
                     .addComponent(jTextField_busqueda_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_buscar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane_busqueda_gimnasios, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane_busqueda_gimnasios, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_elem_seleccionado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(jLabel1)
@@ -501,7 +512,7 @@ public class MainUIFrame extends javax.swing.JFrame {
         DefaultListModel<String> listaModelo = new DefaultListModel();
         
         for (Gimnasio gimnasio : listaGimnasios) {
-            listaModelo.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+            listaModelo.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
         }
 
         jList_busqueda_nombre.setModel(listaModelo);
@@ -535,7 +546,7 @@ public class MainUIFrame extends javax.swing.JFrame {
         DefaultListModel<String> listModel = new DefaultListModel();
         
         for (Gimnasio gimnasio : listaGimnasios) {
-            listModel.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+            listModel.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
         }
         jList_busqueda_promedio.setModel(listModel);
     }//GEN-LAST:event_jButton_filtrarPorPromedioMouseClicked
@@ -549,7 +560,7 @@ public class MainUIFrame extends javax.swing.JFrame {
             listaOrdenada = gymDao.ordenaGimnasiosMaquinasMS(listaOriginal, 0, listaOriginal.size()- 1);
 
             for (Gimnasio gimnasio : listaOrdenada) {
-                modeloLista.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
             }
 
             jList_ordenamiento.setModel(modeloLista);
@@ -558,7 +569,7 @@ public class MainUIFrame extends javax.swing.JFrame {
             listaOrdenada = gymDao.ordenaGimnasiosMaquinasIS(listaOriginal);
 
             for (Gimnasio gimnasio : listaOrdenada) {
-                modeloLista.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
             }
 
             jList_ordenamiento.setModel(modeloLista);
@@ -574,7 +585,7 @@ public class MainUIFrame extends javax.swing.JFrame {
             listaOrdenada = gymDao.ordenaGimnasiosNombreMS(listaOriginal);
 
             for (Gimnasio gimnasio : listaOrdenada) {
-                modeloLista.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
             }
 
             jList_ordenamiento.setModel(modeloLista);
@@ -583,7 +594,7 @@ public class MainUIFrame extends javax.swing.JFrame {
             listaOrdenada = gymDao.ordenaGimnasiosNombreIS(listaOriginal);
 
             for (Gimnasio gimnasio : listaOrdenada) {
-                modeloLista.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
             }
 
             jList_ordenamiento.setModel(modeloLista);
@@ -639,7 +650,6 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox_usar_insercion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel_busqueda_nombre;
     private javax.swing.JLabel jLabel_cant_clientes;
     private javax.swing.JLabel jLabel_cantidad_maquinas;
@@ -648,7 +658,6 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_editar_maquinas;
     private javax.swing.JLabel jLabel_editar_nombre;
     private javax.swing.JLabel jLabel_editar_promedio;
-    private javax.swing.JLabel jLabel_elem_seleccionado;
     private javax.swing.JLabel jLabel_nombre_gym;
     private javax.swing.JLabel jLabel_promedioMinimo;
     private javax.swing.JLabel jLabel_tituloPrincipal;

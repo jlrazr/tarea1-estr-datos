@@ -30,6 +30,15 @@ public class GimnasioDAO {
         return listaCoincidencias;
     }
     
+    public Gimnasio EncuentraPorId(int id) {
+        for (Gimnasio gimnasio : gimnasios) {
+            if (gimnasio.getId() == id) {
+                return gimnasio;
+            }
+        }
+        return null;
+    }
+    
     public void ActualizarGimnasio(Gimnasio gimnasio) {
         for (int i = 0; i < gimnasios.size(); i++) {
             if (gimnasios.get(i).getId() == gimnasio.getId()) {
