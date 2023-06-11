@@ -307,9 +307,12 @@
                                       </Group>
                                   </Group>
                                   <Component id="jButton_editar_guardar_cambios1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_elem_seleccionado" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="280" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -326,8 +329,14 @@
                           <Component id="jButton_buscar_nombre" alignment="3" pref="20" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane_busqueda_gimnasios" min="-2" pref="393" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jScrollPane_busqueda_gimnasios" min="-2" pref="361" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel_elem_seleccionado" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -341,7 +350,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jTextField_editar_promedio" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jCheckBox_editar_crossfit" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jTextField_editar_id" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField_editar_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField_editar_maquinas" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -349,7 +358,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton_editar_guardar_cambios1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -373,6 +382,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jList_busqueda_nombre.addListSelectionListener(new ListSelectionListener() {&#xa;    public void valueChanged(ListSelectionEvent evt) {&#xa;        if (!evt.getValueIsAdjusting()) {&#xa;            // Get the selected item from the list and set it as the JLabel&apos;s text&#xa;            String selectedValue = jList_busqueda_nombre.getSelectedValue();&#xa;            jLabel_elem_seleccionado.setText(selectedValue);&#xa;        }&#xa;    }&#xa;});"/>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
@@ -433,6 +443,18 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton_editar_guardar_cambios1MouseClicked"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Elemento Seleccionado: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel_elem_seleccionado">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="No se ha seleccionado nig&#xfa;n elemento"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator2">
             </Component>
           </SubComponents>
         </Container>

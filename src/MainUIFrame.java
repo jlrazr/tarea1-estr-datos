@@ -1,7 +1,8 @@
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /*
  * @author Jose Luis Mora
@@ -61,6 +62,9 @@ public class MainUIFrame extends javax.swing.JFrame {
         jTextField_editar_promedio = new javax.swing.JTextField();
         jCheckBox_editar_crossfit = new javax.swing.JCheckBox();
         jButton_editar_guardar_cambios1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel_elem_seleccionado = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel_busquedaPorClientes = new javax.swing.JPanel();
         jLabel_promedioMinimo = new javax.swing.JLabel();
         jTextField_promedioClientes = new javax.swing.JTextField();
@@ -206,6 +210,15 @@ public class MainUIFrame extends javax.swing.JFrame {
 
         jList_busqueda_nombre.setModel(new DefaultListModel<String>());
         jScrollPane_busqueda_gimnasios.setViewportView(jList_busqueda_nombre);
+        jList_busqueda_nombre.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent evt) {
+                if (!evt.getValueIsAdjusting()) {
+                    // Get the selected item from the list and set it as the JLabel's text
+                    String selectedValue = jList_busqueda_nombre.getSelectedValue();
+                    jLabel_elem_seleccionado.setText(selectedValue);
+                }
+            }
+        });
 
         jLabel1.setText("Editar Gimnasio");
 
@@ -232,6 +245,10 @@ public class MainUIFrame extends javax.swing.JFrame {
                 jButton_editar_guardar_cambios1MouseClicked(evt);
             }
         });
+
+        jLabel3.setText("Elemento Seleccionado: ");
+
+        jLabel_elem_seleccionado.setText("No se ha seleccionado nigún elemento");
 
         javax.swing.GroupLayout jPanel_buscarGimnasiosLayout = new javax.swing.GroupLayout(jPanel_buscarGimnasios);
         jPanel_buscarGimnasios.setLayout(jPanel_buscarGimnasiosLayout);
@@ -271,8 +288,11 @@ public class MainUIFrame extends javax.swing.JFrame {
                                 .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField_editar_promedio, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel_editar_promedio)))
-                            .addComponent(jButton_editar_guardar_cambios1))
-                        .addGap(0, 280, Short.MAX_VALUE)))
+                            .addComponent(jButton_editar_guardar_cambios1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel_elem_seleccionado))
+                        .addGap(0, 280, Short.MAX_VALUE))
+                    .addComponent(jSeparator2))
                 .addContainerGap())
         );
         jPanel_buscarGimnasiosLayout.setVerticalGroup(
@@ -285,8 +305,14 @@ public class MainUIFrame extends javax.swing.JFrame {
                     .addComponent(jTextField_busqueda_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_buscar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane_busqueda_gimnasios, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane_busqueda_gimnasios, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_elem_seleccionado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel_buscarGimnasiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -305,7 +331,7 @@ public class MainUIFrame extends javax.swing.JFrame {
                         .addComponent(jTextField_editar_maquinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton_editar_guardar_cambios1)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Búsqueda de Gimnasios", jPanel_buscarGimnasios);
@@ -613,6 +639,7 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox_usar_insercion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel_busqueda_nombre;
     private javax.swing.JLabel jLabel_cant_clientes;
     private javax.swing.JLabel jLabel_cantidad_maquinas;
@@ -621,6 +648,7 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_editar_maquinas;
     private javax.swing.JLabel jLabel_editar_nombre;
     private javax.swing.JLabel jLabel_editar_promedio;
+    private javax.swing.JLabel jLabel_elem_seleccionado;
     private javax.swing.JLabel jLabel_nombre_gym;
     private javax.swing.JLabel jLabel_promedioMinimo;
     private javax.swing.JLabel jLabel_tituloPrincipal;
@@ -636,6 +664,7 @@ public class MainUIFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane_busqueda_gimnasios;
     private javax.swing.JScrollPane jScrollPane_listaGimnasios;
     private javax.swing.JScrollPane jScrollPane_ordenamiento;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable_tablaListaGimnasios;
     private javax.swing.JTextField jTextField_busqueda_nombre;
