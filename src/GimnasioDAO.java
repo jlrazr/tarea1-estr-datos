@@ -23,7 +23,7 @@ public class GimnasioDAO {
         ArrayList<Gimnasio> listaCoincidencias = new ArrayList<>();
 
         for (Gimnasio gimnasio : gimnasios) {
-            if (gimnasio.getNombre().contains(nombreEntrada)) {
+            if (gimnasio.getNombre().toLowerCase().contains(nombreEntrada)) {
                 listaCoincidencias.add(gimnasio);
             }
         }

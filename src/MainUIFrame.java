@@ -471,14 +471,14 @@ public class MainUIFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void jButton_buscar_nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_buscar_nombreMouseClicked
-        ArrayList<Gimnasio> listaGimnasios = gymDao.EncuentraPorNombre(jTextField_busqueda_nombre.getText());
-        DefaultListModel<String> listModel = new DefaultListModel();
+        ArrayList<Gimnasio> listaGimnasios = gymDao.EncuentraPorNombre(jTextField_busqueda_nombre.getText().toLowerCase());
+        DefaultListModel<String> listaModelo = new DefaultListModel();
         
         for (Gimnasio gimnasio : listaGimnasios) {
-            listModel.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+            listaModelo.addElement("ID: " + gimnasio.getId() + "   |    Nombre: " + gimnasio.getNombre() + "   |    Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |    Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |    Promedio clientes por mes: " + gimnasio.getClientesPorMes());
         }
 
-        jList_busqueda_nombre.setModel(listModel);
+        jList_busqueda_nombre.setModel(listaModelo);
     }//GEN-LAST:event_jButton_buscar_nombreMouseClicked
 
     private void jButton_editar_guardar_cambios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_editar_guardar_cambios1MouseClicked
@@ -489,6 +489,12 @@ public class MainUIFrame extends javax.swing.JFrame {
         int clientes = Integer.parseInt(jTextField_editar_promedio.getText());
         
         Gimnasio nuevosDatos = new Gimnasio(id, nombre, maquinas, crossfit, clientes);
+        
+        jTextField_editar_id.setText(null);
+        jTextField_editar_nombre.setText(null);
+        jTextField_editar_maquinas.setText(null);
+        jCheckBox_editar_crossfit.setSelected(false);
+        jTextField_editar_promedio.setText(null);
 
         gymDao.ActualizarGimnasio(nuevosDatos);
 
