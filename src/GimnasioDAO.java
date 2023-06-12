@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class GimnasioDAO {
     public ArrayList<Gimnasio> gimnasios;
@@ -48,15 +49,23 @@ public class GimnasioDAO {
         }
     }
     
-    public ArrayList<Gimnasio> FiltrarPorPromedio(int promedio) {
-        ArrayList<Gimnasio> listaCoincidencias = new ArrayList<>();
+    static ArrayList<Gimnasio> FiltrarPorPromedio(ArrayList<Gimnasio> listaGimnasios, int promedio) {
+        return filtraGimnasios(listaGimnasios.listIterator(), promedio);
+    }
 
-        for (Gimnasio gimnasio : gimnasios) {
-            if (gimnasio.getClientesPorMes() >= promedio) {
-                listaCoincidencias.add(gimnasio);
-            }
+    public static ArrayList<Gimnasio> filtraGimnasios(ListIterator<Gimnasio> iterator, int promedio) {
+        if (!iterator.hasNext()) {
+            return new ArrayList<>();
         }
-        return listaCoincidencias;
+
+        Gimnasio actual = iterator.next();
+        ArrayList<Gimnasio> resultado = filtraGimnasios(iterator, promedio);
+
+        if (actual.getClientesPorMes() >= promedio) {
+            resultado.add(actual);
+        }
+
+        return resultado;
     }
 
     // Métodos de orden por inserción

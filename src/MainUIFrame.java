@@ -542,7 +542,7 @@ public class MainUIFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_lista_actualizaMouseClicked
 
     private void jButton_filtrarPorPromedioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_filtrarPorPromedioMouseClicked
-        ArrayList<Gimnasio> listaGimnasios = gymDao.FiltrarPorPromedio(Integer.parseInt(jTextField_promedioClientes.getText()));
+        ArrayList<Gimnasio> listaGimnasios = gymDao.FiltrarPorPromedio(gymDao.obtenerGimnasios(), Integer.parseInt(jTextField_promedioClientes.getText()));
         DefaultListModel<String> listModel = new DefaultListModel();
         
         for (Gimnasio gimnasio : listaGimnasios) {
