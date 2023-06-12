@@ -512,7 +512,7 @@ public class MainUIFrame extends javax.swing.JFrame {
         DefaultListModel<String> listaModelo = new DefaultListModel();
         
         for (Gimnasio gimnasio : listaGimnasios) {
-            listaModelo.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+            listaModelo.addElement("ID: " + gimnasio.getId() + "   |  Nombre: " + gimnasio.getNombre() + "   |  Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |  Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |  Promedio clientes por mes: " + gimnasio.getClientesPorMes());
         }
 
         jList_busqueda_nombre.setModel(listaModelo);
@@ -546,7 +546,7 @@ public class MainUIFrame extends javax.swing.JFrame {
         DefaultListModel<String> listModel = new DefaultListModel();
         
         for (Gimnasio gimnasio : listaGimnasios) {
-            listModel.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+            listModel.addElement("ID: " + gimnasio.getId() + "   |  Nombre: " + gimnasio.getNombre() + "   |  Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |  Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |  Promedio clientes por mes: " + gimnasio.getClientesPorMes());
         }
         jList_busqueda_promedio.setModel(listModel);
     }//GEN-LAST:event_jButton_filtrarPorPromedioMouseClicked
@@ -560,7 +560,7 @@ public class MainUIFrame extends javax.swing.JFrame {
             listaOrdenada = gymDao.ordenaGimnasiosMaquinasMS(listaOriginal, 0, listaOriginal.size()- 1);
 
             for (Gimnasio gimnasio : listaOrdenada) {
-                modeloLista.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   |  Nombre: " + gimnasio.getNombre() + "   |  Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |  Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |  Promedio clientes por mes: " + gimnasio.getClientesPorMes());
             }
 
             jList_ordenamiento.setModel(modeloLista);
@@ -569,7 +569,7 @@ public class MainUIFrame extends javax.swing.JFrame {
             listaOrdenada = gymDao.ordenaGimnasiosMaquinasIS(listaOriginal);
 
             for (Gimnasio gimnasio : listaOrdenada) {
-                modeloLista.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   |  Nombre: " + gimnasio.getNombre() + "   |  Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |  Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |  Promedio clientes por mes: " + gimnasio.getClientesPorMes());
             }
 
             jList_ordenamiento.setModel(modeloLista);
@@ -585,7 +585,7 @@ public class MainUIFrame extends javax.swing.JFrame {
             listaOrdenada = gymDao.ordenaGimnasiosNombreMS(listaOriginal);
 
             for (Gimnasio gimnasio : listaOrdenada) {
-                modeloLista.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   |  Nombre: " + gimnasio.getNombre() + "   |  Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |  Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |  Promedio clientes por mes: " + gimnasio.getClientesPorMes());
             }
 
             jList_ordenamiento.setModel(modeloLista);
@@ -594,7 +594,7 @@ public class MainUIFrame extends javax.swing.JFrame {
             listaOrdenada = gymDao.ordenaGimnasiosNombreIS(listaOriginal);
 
             for (Gimnasio gimnasio : listaOrdenada) {
-                modeloLista.addElement("ID: " + gimnasio.getId() + "   Nombre: " + gimnasio.getNombre() + "   Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   Promedio clientes por mes: " + gimnasio.getClientesPorMes());
+                modeloLista.addElement("ID: " + gimnasio.getId() + "   |  Nombre: " + gimnasio.getNombre() + "   |  Número de máquinas: " + gimnasio.getNumeroMaquinas() + "   |  Incluye crossfit: " + gimnasio.getIncluyeCrossfit() + "   |  Promedio clientes por mes: " + gimnasio.getClientesPorMes());
             }
 
             jList_ordenamiento.setModel(modeloLista);
