@@ -217,26 +217,29 @@ public class MainUIFrame extends javax.swing.JFrame {
             }
 
             public void llenarCampos(String stringInicial) {
-                int id;
-                String[] partes = stringInicial.split("   ");
-                for(int i = 0; i < partes.length; i++) {
-                    partes[i] = partes[i].trim();
-                }
+                if(stringInicial != null) {
+                    int id;
+                    String[] partes = stringInicial.split("   ");
+                    for(int i = 0; i < partes.length; i++) {
+                        partes[i] = partes[i].trim();
+                    }
 
-                String[] parteId = partes[0].split(":");
-                id = Integer.parseInt(parteId[1].trim());
+                    String[] parteId = partes[0].split(":");
+                    id = Integer.parseInt(parteId[1].trim());
 
-                Gimnasio gimnasio = gymDao.EncuentraPorId(id);
+                    Gimnasio gimnasio = gymDao.EncuentraPorId(id);
 
-                jTextField_editar_id.setText(Integer.toString(gimnasio.getId()));
-                jTextField_editar_nombre.setText(gimnasio.getNombre());
-                jTextField_editar_maquinas.setText(Integer.toString(gimnasio.getNumeroMaquinas()));
-                jTextField_editar_promedio.setText(Integer.toString(gimnasio.getClientesPorMes()));
-                if (gimnasio.getIncluyeCrossfit() == true) {
-                    jCheckBox_editar_crossfit.setSelected(true);
+                    jTextField_editar_id.setText(Integer.toString(gimnasio.getId()));
+                    jTextField_editar_nombre.setText(gimnasio.getNombre());
+                    jTextField_editar_maquinas.setText(Integer.toString(gimnasio.getNumeroMaquinas()));
+                    jTextField_editar_promedio.setText(Integer.toString(gimnasio.getClientesPorMes()));
+                    if (gimnasio.getIncluyeCrossfit() == true) {
+                        jCheckBox_editar_crossfit.setSelected(true);
+                    } else {
+                        jCheckBox_editar_crossfit.setSelected(false);
+                    }
                 }
             }
-
         });
 
         jLabel1.setText("Editar Gimnasio");
