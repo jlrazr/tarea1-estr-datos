@@ -36,7 +36,7 @@ public class Gimnasio {
     }
     
     // Setters
-        public void setGymName(String nombre) {
+        public void SetNombreGimnasio(String nombre) {
         this.nombre = nombre;
     }
 
